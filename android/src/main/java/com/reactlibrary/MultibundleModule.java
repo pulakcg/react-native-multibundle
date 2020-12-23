@@ -6,6 +6,8 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Promise;
 
+import java.io.File;
+
 public class MultibundleModule extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
@@ -24,12 +26,19 @@ public class MultibundleModule extends ReactContextBaseJavaModule {
     public void loadBundle(String bundleName, int bundleId, Promise promise) {
 
         try {
+            File file =  reactContext.getApplicationContext().getExternalFilesDir(null);
             CatalystInstance catalystInstance = this.reactContext.getCatalystInstance();
-            catalystInstance.loadScriptFromAssets(
-              this.reactContext.getAssets(),
-              "assets://" + bundleName + ".android.bundle",
-              bundleId,
-              false);
+            String path = file.getAbsolutePath() + "/";
+            //"assets://"
+//            catalystInstance.loadScriptFromAssets(
+//              this.reactContext.getAssets(),
+//                    path+ bundleName + ".android.bundle",
+//              bundleId,
+//              false);
+
+            catalystInstance.loadScriptFromFile( path+ bundleName + ".android.bundle", "",
+                    bundleId,
+                    false);
             promise.resolve(null);
         } catch(Exception e) {
             promise.reject(e);

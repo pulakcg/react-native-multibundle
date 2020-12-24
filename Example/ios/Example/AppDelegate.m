@@ -38,7 +38,10 @@
 //#if DEBUG
 //  return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
 //#else
-  return [[NSBundle mainBundle] URLForResource:@"index" withExtension:@"ios.bundle"];
+         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+         NSString *documentsDirectory = [paths objectAtIndex:0];
+         NSString *str = [documentsDirectory stringByAppendingFormat:@"/index.ios.bundle"];
+         return [NSURL URLWithString:str];
 //#endif
 }
 

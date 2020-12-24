@@ -371,7 +371,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# added by Haul\nexport CLI_PATH=node_modules/@haul-bundler/cli/bin/haul.js\nexport BUNDLE_COMMAND=\"multi-bundle\"\nexport EXTRA_PACKAGER_ARGS=\"--skip-host-check --progress none\"\nexport FORCE_BUNDLING=1\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
+			shellScript = "# added by Haul\nexport CLI_PATH=node_modules/@haul-bundler/cli/bin/haul.js\nexport BUNDLE_COMMAND=\"multi-bundle\"\nexport EXTRA_PACKAGER_ARGS=\"--skip-host-check --progress none\"\nexport FORCE_BUNDLING=0\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		129FF1584D2739782CDEC571 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

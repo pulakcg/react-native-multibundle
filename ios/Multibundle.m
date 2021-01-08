@@ -17,8 +17,10 @@ RCT_EXPORT_METHOD(loadBundle:(NSString *)bundleName
 
     @try
     {
-        NSURL *url = [[NSBundle mainBundle] URLForResource:bundleName withExtension:@"ios.bundle"];
-        [bridge registerSegmentWithId:[bundleId unsignedIntegerValue] path:url.absoluteString];
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *str = [documentsDirectory stringByAppendingFormat:@"/%@.ios.bundle",bundleName];
+        [bridge registerSegmentWithId:[bundleId unsignedIntegerValue] path:str];
 
         resolve(nil);
         

@@ -28,7 +28,7 @@ public class MultibundleModule extends ReactContextBaseJavaModule {
         try {
             File file =  reactContext.getApplicationContext().getExternalFilesDir(null);
             CatalystInstance catalystInstance = this.reactContext.getCatalystInstance();
-            String path = file.getAbsolutePath() + "/";
+            String path = file.getAbsolutePath() + "/bundle/";
             //"assets://"
 //            catalystInstance.loadScriptFromAssets(
 //              this.reactContext.getAssets(),

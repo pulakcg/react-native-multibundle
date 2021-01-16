@@ -18,8 +18,15 @@ RCT_EXPORT_METHOD(loadBundle:(NSString *)bundleName
     @try
     {
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *documentsDirectory = [paths objectAtIndex:0];  
         NSString *str = [documentsDirectory stringByAppendingFormat:@"/%@.ios.bundle",bundleName];
+        if([bundleName isEqual:@"index"] || [bundleName isEqual:@"host"])
+        {
+            str = [documentsDirectory stringByAppendingFormat:@"/%@.ios.bundle",bundleName];
+        }
+        else{
+            str = [documentsDirectory stringByAppendingFormat:@"/bundle/%@.ios.bundle",bundleName];
+        }
         [bridge registerSegmentWithId:[bundleId unsignedIntegerValue] path:str];
 
         resolve(nil);

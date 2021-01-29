@@ -27,6 +27,7 @@ RCT_EXPORT_METHOD(loadBundle:(NSString *)bundleName
         else{
             str = [documentsDirectory stringByAppendingFormat:@"/bundle/%@.ios.bundle",bundleName];
         }
+        
         [bridge registerSegmentWithId:[bundleId unsignedIntegerValue] path:str];
 
         resolve(nil);
